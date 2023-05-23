@@ -28,8 +28,8 @@ const NavBar = () => {
                         </ul>
                     </div>
                     <div className="text-center items-center pl-4">
-                        <a className=" text-[#FFFFFF] normal-case text-2xl font-extrabold">Bistro Boss</a>
-                        <p className="monospace  text-[#FFFFFF] font-bold text-2xl">Restaurant</p>
+                        <a className=" text-[#FFFFFF] normal-case text-2xl font-extrabold">Bistro <span className="text-[#FCCB05]">Boss</span></a>
+                        <p className="monospace  text-[#FFFFFF] font-bold text-2xl"><span className="text-[#FCCB05] text-3xl">R</span>estaurant</p>
                     </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
@@ -38,7 +38,7 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Get started</a>
+                    <a className="btn btn-outline btn-warning">Login</a>
                 </div>
             </div>
         </div>
