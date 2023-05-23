@@ -19,13 +19,16 @@ const PopularMenu = () => {
                 subHeading={"Check it out"}
                 heading={"FROM OUR MENU"}
             ></SectionTitle>
-            <div className="grid md:grid-cols-2 gap-10">
+            <div className="grid md:grid-cols-2 gap-10 mt-10">
                 {
                     menu.map(item => <MenuItem
                         key={item._id}
                         item={item}
                     ></MenuItem>)
                 }
+            </div>
+            <div className="mx-auto text-center mt-7">
+                <button className="btn btn-outline btn-warning border-0 border-b-4">View all menu</button>
             </div>
         </section>
     );
