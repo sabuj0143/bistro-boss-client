@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.lora {
+    font-family: 'Lora', serif;
+}
+
+.roboto {
+    font-family: 'Roboto Slab', serif;
+}
+.space{
+    font-family: 'Space Grotesk', sans-serif;
+}
+.lilita{
+    font-family: 'Lilita One', cursive;
+}
+.cursive{
+    font-family: 'Permanent Marker', cursive;
+}
