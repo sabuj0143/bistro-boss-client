@@ -5,7 +5,7 @@ import NavBar from "../pages/Sherad/NavBar/NavBar";
 const Main = () => {
 
     const location = useLocation();
-    const noHeaderFOoter = location.pathname.includes("login");
+    const noHeaderFOoter = location.pathname.includes("login") || location.pathname.includes("register")
 
     return (
         <>
