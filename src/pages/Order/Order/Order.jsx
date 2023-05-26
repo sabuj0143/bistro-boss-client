@@ -17,10 +17,10 @@ const Order = () => {
     const [menu] = useMenu();
 
 
+    const salads = menu.filter(item => item.category === 'salad');
+    const pizzas = menu.filter(item => item.category === 'pizza');
+    const soups = menu.filter(item => item.category === 'soup');
     const desserts = menu.filter(item => item.category === 'dessert');
-    const salad = menu.filter(item => item.category === 'salad');
-    const soup = menu.filter(item => item.category === 'soup');
-    const pizza = menu.filter(item => item.category === 'pizza');
     const drinks = menu.filter(item => item.category === 'drinks');
 
     return (
@@ -31,20 +31,20 @@ const Order = () => {
             <Cover img={orderCoverImg} title={"ORDER FOOD"}></Cover>
             <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
                 <TabList className="uppercase text-center justify-center my-5">
-                    <Tab>salad</Tab>
-                    <Tab>pizza</Tab>
-                    <Tab>soup</Tab>
-                    <Tab>desserts</Tab>
-                    <Tab>drinks</Tab>
+                    <Tab>Salads</Tab>
+                    <Tab>Pizzas</Tab>
+                    <Tab>Soups</Tab>
+                    <Tab>Desserts</Tab>
+                    <Tab>Drinks</Tab>
                 </TabList>
                 <TabPanel>
-                    <OrderTab items={salad}></OrderTab>
+                    <OrderTab items={salads}></OrderTab>
                 </TabPanel>
                 <TabPanel>
-                    <OrderTab items={pizza}></OrderTab>
+                    <OrderTab items={pizzas}></OrderTab>
                 </TabPanel>
                 <TabPanel>
-                    <OrderTab items={soup}></OrderTab>
+                    <OrderTab items={soups}></OrderTab>
                 </TabPanel>
                 <TabPanel>
                     <OrderTab items={desserts}></OrderTab>
