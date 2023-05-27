@@ -8,13 +8,14 @@ const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
 
+
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
     // Create a new user 
     const createUser = (email, password) => {
         setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password)
+        return createUserWithEmailAndPassword(auth, email, password);
     }
     // Sign in
     const signIn = (email, password) => {
@@ -26,7 +27,7 @@ const AuthProvider = ({ children }) => {
         return signOut();
     }
 
-    // Login problem sovled
+    // Login problem 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
