@@ -1,14 +1,17 @@
-import { useContext, useEffect,  useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2'
 import { AuthContext } from '../../Provider/AuthProvider';
 
 const Login = () => {
 
-
     const [disabled, setDisabled] = useState(true);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || "/";
 
     const { signIn } = useContext(AuthContext);
 
@@ -31,12 +34,13 @@ const Login = () => {
                 Swal.fire({
                     title: 'User Login in successFull',
                     showClass: {
-                      popup: 'animate__animated animate__fadeInDown'
+                        popup: 'animate__animated animate__fadeInDown'
                     },
                     hideClass: {
-                      popup: 'animate__animated animate__fadeOutUp'
+                        popup: 'animate__animated animate__fadeOutUp'
                     }
-                  })
+                });
+                navigate(from, { replace: true })
             })
     };
 
@@ -84,7 +88,7 @@ const Login = () => {
 
                                 <LoadCanvasTemplate />
 
-                                <input onBlur={handleValidateCaptcha} type="text"  name="captcha" placeholder="Type the captcha above" className="input input-bordered mt-2" />
+                                <input onBlur={handleValidateCaptcha} type="text" name="captcha" placeholder="Type the captcha above" className="input input-bordered mt-2" />
                             </div>
                             <div className="form-control mt-6">
                                 <input disabled={disabled} className="btn btn-primary" type="submit" value="Login" />
