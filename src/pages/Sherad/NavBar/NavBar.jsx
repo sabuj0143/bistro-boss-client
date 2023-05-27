@@ -8,10 +8,10 @@ const NavBar = () => {
 
     const handleLogOut = () => {
         logOut()
-        .then(() => {})
-        .catch(error => {
-            console.log(error);
-        })
+            .then(() => { })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     const navOptions = <>
@@ -44,7 +44,11 @@ const NavBar = () => {
                     </ul>
                 </div>
                 {user ? <>
+
+
+
                     <div className="navbar-end">
+                        <span className="mr-4">{user?.displayName}</span>
                         <a onClick={handleLogOut} className="btn btn-outline btn-warning">LogOut</a>
                     </div>
                 </> : <>
