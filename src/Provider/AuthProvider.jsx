@@ -19,12 +19,12 @@ const AuthProvider = ({ children }) => {
     }
     // Sign in
     const signIn = (email, password) => {
-        return signInWithEmailAndPassword(email, password)
+        return signInWithEmailAndPassword(auth, email, password);
     }
     // Log out
     const logOut = () => {
         setLoading(true);
-        return signOut();
+        return signOut(auth);
     }
 
     // Login problem 
@@ -35,7 +35,7 @@ const AuthProvider = ({ children }) => {
             setLoading(false);
         });
         return () => {
-            return unsubscribe();
+            return unsubscribe;
         }
 
     }, [])
