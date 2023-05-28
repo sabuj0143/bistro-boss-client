@@ -1,8 +1,44 @@
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 const FoodCart = ({ item }) => {
 
     const { name, image, price, recipe } = item;
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const handleAddToCart = (item) => {
+        console.log(item);
+        if (user) {
+            fetch('http://localhost:5000/carts')
+                .then(res => res.json())
+                .then(data => {
+                    if (data.insertedId) {
+                        Swal.fire({
+                            icon: 'success',
+                            text: 'Add to Cart successfully',
+                        })
+                    }
+                })
+        }
+        else {
+            Swal.fire({
+                title: 'Places Login First',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Login Now !'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                   navigate('/login')
+                }
+            })
+        }
+    }
 
     return (
 
@@ -13,7 +49,7 @@ const FoodCart = ({ item }) => {
                 <h2 className="card-title">{name}</h2>
                 <p className="py-4">{recipe}</p>
                 <div>
-                    <button className="btn btn-outline btn-warning border-0 border-b-4">Add to cart</button>
+                    <button onClick={() => handleAddToCart(item)} className="btn btn-outline btn-warning border-0 border-b-4">Add to cart</button>
                 </div>
             </div>
         </div>
