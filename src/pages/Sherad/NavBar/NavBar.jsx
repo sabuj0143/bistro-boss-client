@@ -24,7 +24,7 @@ const NavBar = () => {
         <li><Link to="/secret">Secret</Link></li>
 
         <li>
-            <Link to="/">
+            <Link to="/dashboard/myCart">
                 <button className="flex items-center gap-2">
                     <FaShoppingCart className="text-3xl" />
                     <div className="badge badge-secondary">+{cart?.length || 0}</div>
