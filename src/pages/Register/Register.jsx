@@ -13,30 +13,45 @@ const Register = () => {
     const navigate = useNavigate();
 
     const onSubmit = data => {
-        console.log(data);
+
         createUser(data.email, data.password)
             .then(result => {
+
                 const loggedUser = result.user;
                 console.log(loggedUser);
 
                 updateUserProfile(data.name, data.photoURL)
-                .then(() => {
-                    console.log("user profile updated")
-                    reset();
+                    .then(() => {
 
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'User created successfully',
-                        showConfirmButton: false,
-                        timer: 1500
-                      })
-                      navigate('/')
+                        const saveUser = { name: data.name, email: data.email }
+                        console.log(saveUser)
 
-                })
-                .catch(err => {
-                    console.log(err)
-                })
+                        fetch('http://localhost:5000/users', {
+                            method: "POST",
+                            headers: {
+                                "content-type": "application/json",
+                            },
+                            body: JSON.stringify(saveUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    reset();
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'User created successfully',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    })
+                                    navigate('/')
+                                }
+                            })
+
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
             })
     };
 
