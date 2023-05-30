@@ -11,6 +11,7 @@ import Secret from "../pages/Sherad/secret/secret";
 import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
 import MyCart from "../pages/Dashboard/MyCart/MyCart";
+import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 
 
   export const router = createBrowserRouter([
@@ -51,6 +52,10 @@ import MyCart from "../pages/Dashboard/MyCart/MyCart";
         {
           path: "myCart",
           element: <MyCart></MyCart>
+        },
+        {
+          path: "allUsers",
+          element: <AllUsers></AllUsers>
         }
       ]
     }
