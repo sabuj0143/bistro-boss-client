@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
+import SocialLogin from "../Sherad/SocialLogin/SocialLogin";
 
 
 const Register = () => {
@@ -24,7 +25,7 @@ const Register = () => {
                     .then(() => {
 
                         const saveUser = { name: data.name, email: data.email }
-                        console.log(saveUser)
+                        
 
                         fetch('http://localhost:5000/users', {
                             method: "POST",
@@ -110,9 +111,12 @@ const Register = () => {
                                 <input className="btn btn-primary" type="submit" value="Register" />
                             </div>
                         </form>
-                        <p><small>Already have an account ? <Link to="/login">
-                            Login
-                        </Link> </small></p>
+                        <div className="w-full text-center justify-center font-medium mb-5">
+                            <p className='text-xl'><small>Already have an account ? <Link to="/login">
+                                <span className='text-red-500'>Login</span>
+                            </Link> </small></p>
+                            <SocialLogin></SocialLogin>
+                        </div>
                     </div>
                 </div>
             </div>
