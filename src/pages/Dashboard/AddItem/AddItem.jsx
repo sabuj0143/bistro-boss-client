@@ -1,13 +1,52 @@
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { useForm } from 'react-hook-form';
 
+const img_hosting_token = import.meta.env.VITE_Image_Upload_token;
+// console.log(img_hosting_token);
+
 const AddItem = () => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const [axiosSecure] = useAxiosSecure();
+    const { register, handleSubmit, reset } = useForm();
+    const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
+    
     const onSubmit = data => {
-        console.log(data)
+        
+        const formData = new FormData();
+        formData.append('image', data.image[0]);
+
+        fetch(img_hosting_url, {
+            method: 'POST',
+            body:formData
+        })
+        .then(res => res.json())
+        .then(imgRes => {
+            // console.log(imgRes);
+            if(imgRes.success){
+                const imgURL = imgRes.data.display_url;
+                const {name, price, category, recipe} = data;
+                const newItem = {name, price: parseFloat(price), category, recipe, image: imgURL};
+
+                console.log(newItem);
+                axiosSecure.post('/menu', newItem)
+                .then(data => {
+                    console.log("Posting Data", data.data);
+                    if(data.data.insertedId){
+                        reset();
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'New Item Menu successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                          })
+                    }
+                })
+            }
+        })
     };
-    console.log(errors);
 
     return (
         <div className="w-full my-16 p-11">
@@ -28,13 +67,15 @@ const AddItem = () => {
                             <span className="label-text">Category*</span>
                         </label>
                         <select
+                        defaultValue="Pick One"
                             {...register("category", { required: true })}
                             className="select select-bordered">
-                            <option disabled selected></option>
+                            <option disabled>Pick One</option>
                             <option>Salad</option>
                             <option>Soup</option>
                             <option>Pizza</option>
                             <option>Desserts</option>
+                            <option>Desi</option>
                             <option>Drinks</option>
                         </select>
                     </div>
