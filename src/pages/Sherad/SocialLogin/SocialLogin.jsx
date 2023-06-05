@@ -19,7 +19,7 @@ const SocialLogin = () => {
 
                 const saveUser = { name: loggedUser.Name, email: loggedUser.email }
 
-                fetch('http://localhost:5000/users', {
+                fetch('https://bisto-boss-server-sabuj0143.vercel.app/users', {
                     method: "POST",
                     headers: {
                         "content-type": "application/json",

@@ -19,7 +19,7 @@ const FoodCart = ({ item }) => {
         if (user && user.email) {
             const cartItem = { menuId: _id, name, image, price, email: user.email };
 
-            fetch('http://localhost:5000/carts', {
+            fetch('https://bisto-boss-server-sabuj0143.vercel.app/carts', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
