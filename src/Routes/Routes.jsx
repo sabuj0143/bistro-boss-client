@@ -7,7 +7,6 @@ import Menu from "../pages/Menu/Menu/Menu";
 import Order from "../pages/Order/Order/Order";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
-import Secret from "../pages/Sherad/secret/secret";
 import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
 import MyCart from "../pages/Dashboard/MyCart/MyCart";
@@ -16,6 +15,8 @@ import AddItem from "../pages/Dashboard/AddItem/AddItem";
 import AdminRoute from "../components/PrivateRoute/AdminRoute";
 import ManageItems from "../Layout/ManageItems/ManageItems";
 import Payment from "../Layout/Dashboard/Payment/Payment";
+import UserHome from "../Layout/Dashboard/UserHome/UserHome";
+import AdminHome from "../Layout/Dashboard/Admin-Home/AdminHome";
 
 
   export const router = createBrowserRouter([
@@ -42,10 +43,6 @@ import Payment from "../Layout/Dashboard/Payment/Payment";
         {
           path: '/register',
           element: <Register></Register>
-        },
-        {
-          path:"/secret",
-          element: <PrivateRoute><Secret></Secret></PrivateRoute>
         }
       ]
     },
@@ -58,8 +55,17 @@ import Payment from "../Layout/Dashboard/Payment/Payment";
           element: <MyCart></MyCart>
         },
         {
+          path: "userhome",
+          element: <UserHome></UserHome>
+        },
+        {
           path: "payment",
           element: <Payment></Payment>
+        },
+        // Admin routers
+        {
+          path: "adminhome",
+          element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
         },
         {
           path: "allUsers",
