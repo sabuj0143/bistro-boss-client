@@ -54,7 +54,7 @@ const AddItem = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-control w-full ">
                     <label className="label">
-                        <span className="label-text font-semibold">Recipe Name*</span>
+                        <span className="label-text font-semibold">Name*</span>
                     </label>
                     <input type="text"
                         placeholder="Recipe Name"
@@ -71,7 +71,7 @@ const AddItem = () => {
                             {...register("category", { required: true })}
                             className="select select-bordered">
                             <option disabled>Pick One</option>
-                            <option>Salad</option>
+                            <option>pizza</option>
                             <option>Soup</option>
                             <option>Pizza</option>
                             <option>Desserts</option>
