@@ -14,7 +14,7 @@ import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import AddItem from "../pages/Dashboard/AddItem/AddItem";
 import AdminRoute from "../components/PrivateRoute/AdminRoute";
 import ManageItems from "../Layout/ManageItems/ManageItems";
-import Payment from "../Layout/Dashboard/Payment/Payment";
+// import Payment from "../Layout/Dashboard/Payment/Payment";
 import UserHome from "../Layout/Dashboard/UserHome/UserHome";
 import AdminHome from "../Layout/Dashboard/Admin-Home/AdminHome";
 
@@ -58,10 +58,10 @@ import AdminHome from "../Layout/Dashboard/Admin-Home/AdminHome";
           path: "userhome",
           element: <UserHome></UserHome>
         },
-        {
-          path: "payment",
-          element: <Payment></Payment>
-        },
+        // {
+        //   path: "payment",
+        //   element: <Payment></Payment>
+        // },
         // Admin routers
         {
           path: "adminhome",
